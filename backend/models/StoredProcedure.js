@@ -22,6 +22,12 @@ class StoredProcedureModel {
     return await this.callProcedure('sp_eliminar_cliente', [idCliente]);
   }
 
+  //obtener clientes sin SP
+  static async obtenerClientes() {
+    const [rows] = await pool.execute('SELECT * FROM cliente');
+    return rows;
+  }
+
 }
 
 module.exports = StoredProcedureModel;
